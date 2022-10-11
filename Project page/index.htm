@@ -1,0 +1,374 @@
+<!--======================================================================
+//
+// Website: Cam-linkage mechanisms
+//
+// Author:  Yingjie Cheng
+//
+// Date: Sep 15 2022
+//
+==========================================================================-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Cam-linkage Mechanisms</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+    google.load("jquery", "1.3.2");
+  </script>
+  <style type="text/css">
+    body {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 1100px;
+    }
+
+    h1 {
+      font-weight: 300;
+    }
+
+    a:link {
+      text-decoration: none;
+      color: 6464FF
+    }
+
+    a:active {
+      text-decoration: blink
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: 6464FF
+    }
+
+    a:visited {
+      text-decoration: none;
+      color: 551A8B
+    }
+  </style>
+
+
+  <!--------------------------------------------------------------------------------------------------->
+  <!--                                       Header and Photo                                       --->
+  <!--------------------------------------------------------------------------------------------------->
+
+<body data-gr-c-s-loaded="true">
+  <font size="3">
+    <blockquote>
+      <p>
+      </p>
+      <center>
+        <table border="0">
+          <tbody>
+            <tr>
+              <td width="30"></td>
+              <td width="1200">
+                <center>
+
+                  <!--Header-->
+                  <br><br><br>
+                  <h1><span style="font-size: 25pt">Asynchronous Collaborative Autoscanning with Mode Switching for
+                      Multi-Robot Scene Reconstruction </span></h1>
+                  <br>
+
+                  <p class="authors">
+                    <span style="font-size: 15pt">
+                      Junfu Guo</a><sup>1</sup>&nbsp&nbsp
+                      Changhao Li</a><sup>1</sup>&nbsp&nbsp
+                      Xi Xia</a><sup>1</sup>&nbsp&nbsp
+                      <a href="https://csse.szu.edu.cn/staff/ruizhenhu/">Ruizhen Hu</a><sup>2</sup> &nbsp
+                      <a href="http://staff.ustc.edu.cn/~lgliu/">Ligang Liu</a><sup>1</sup> &nbsp
+
+                      <br><br>
+                      <sup>1</sup> <a href="http://en.ustc.edu.cn/">University of Science and Technology of China</a>
+                      &nbsp&nbsp&nbsp
+                      <sup>2</sup> <a href="https://en.szu.edu.cn/">Shenzhen University</a>
+                      &nbsp&nbsp&nbsp
+
+                      <br><br>
+                      <h3 class=""><span style="font-weight: normal;"><a href="https://sa2022.siggraph.org/">SIGGRAPH
+                            Asia 2022</a>, technical paper</span></h3>
+                    </span>
+                  <p class="authors">&nbsp;</p>
+                </center>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </center>
+      <p></p>
+
+
+      <!-- Figure 1: Overview-->
+      <br>
+      <div align="center">
+        <img src="./images/teaser3_image_only-01.png" width="880" alt="Figure 1">
+      </div>
+      <div align="justify" width: 1200px>
+        <p class="figure">
+          <strong>Figure 1:</strong> (Left) Two scanning modes: explorer mode with rapid moving speed and far vision
+          (shown in red)
+          for exploration task and reconstructor mode with low moving speed and narrow vision (shown in blue) for object
+          reconstruction task;
+          (Middle & Right) Our asynchronous collaborative autoscanning method:
+          given the initially reconstructed scene by turning the three robots around their initial locations,
+          our method first generates a set of tasks with the yellow path for each robot (middle).
+          Once one robot has completed all its assigned tasks, robot A in this case, new tasks will be generated and
+          appended to all the robots immediately (right).
+          The completed paths are shown in black, and the paths assigned in the previous round but haven't been
+          completed are shown with dashed yellow lines on top of the black.
+        </p>
+      </div>
+
+      <!--------------------------------------------------------------------------------------------------->
+      <!--                                            Abstract                                          --->
+      <!--------------------------------------------------------------------------------------------------->
+
+      <br>
+      <hr><br>
+      <div align="justify" width: 1200px>
+
+        <h1>Abstract</h1>
+
+        <span style="font-size: 13pt">
+          <!--<ul>-->
+          When conducting autonomous scanning for the online reconstruction of unknown indoor environments,
+          robots have to be competent at exploring the scene structure and reconstructing objects with high quality.
+          Our key observation is that different tasks demand specialized scanning properties of robots:
+          rapid moving speed and far vision for global exploration and slow moving speed and narrow vision for local
+          object reconstruction,
+          which are referred as two different scanning modes: scout and raider, respectively.
+          When further requiring multiple robots to collaborate for efficient exploration and fine-grained
+          reconstruction,
+          we study the questions on when to generate and how to assign those tasks.
+          Therefore, we propose a novel asynchronous collaborative autoscanning method with mode switching,
+          which generates two kinds of scanning tasks with associated scanning modes,
+          i.e., exploration task with scout mode and reconstruction task with raider mode,
+          and assign them to the robots to execute in an asynchronous collaborative manner to highly boost the scanning
+          efficiency and reconstruction quality.
+          Those generated tasks are assigned to the robots by solving a modified Multi-Depot Multiple Traveling Salesman
+          Problem (MDMTSP).
+          Moreover, to further enhance the collaboration and increase the efficiency,
+          we propose a task-flow model that actives the task generation and assignment process immediately
+          when any of the robots finishes all its tasks with no need to wait for all other robots to complete the tasks
+          assigned in the previous iteration.
+          Extensive experiments have been conducted to show the importance of each key component of our method
+          and the superiority of our method over previous methods in scanning efficiency and reconstruction quality.
+        </span>
+      </div>
+
+      <BR><BR>
+
+
+
+
+      <!--------------------------------------------------------------------------------------------------->
+      <!--                                            Download                                          --->
+      <!--------------------------------------------------------------------------------------------------->
+
+      <hr>
+
+      <div align="justify">
+
+        <h1>Download </h1>
+
+        <!--Click the following link to download:-->
+        <span style="font-size: 13pt; line-height:32px">
+          <a href="download/AsyncScan.pdf"> temporary PDF</a>(~30M) <BR>
+          <a href="download/AsyncScan_supplementary.pdf">supplementary material</a>(~3M) <BR>
+          Code </a>(coming soon) <BR>
+          Slide </a>(coming soon) <BR>
+        </span>
+
+      </div>
+
+      <BR><BR>
+
+
+      <!-------------------------------------------- ------------------------------------------------------->
+      <!--                                             Video                                           --->
+      <!--------------------------------------------------------------------------------------------------->
+
+      <hr>
+
+      <h1>Video </h1>
+
+      <div id="Div3" align="center">
+
+        <!-- need modify website link -->
+
+        <iframe width="720" height="480" src="https://www.youtube.com/watch?v=RkayLBGbhos" frameborder="0"
+          allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+      </div>
+
+      <BR><BR><BR>
+
+      <!-- Video -->
+
+
+      <!-------------------------------------------- ------------------------------------------------------->
+      <!--                                             Talk                                           --->
+      <!--------------------------------------------------------------------------------------------------->
+
+      <hr>
+
+      <h1>Talk </h1>
+      <span style="font-size: 13pt">
+        The video will be uploaded after the conference.
+        <!--<ul>-->
+      </span>
+      </div>
+
+      <!-- <div id="Div3" align="center">
+
+        need modify website link
+
+      <!-- <iframe width="720" height="480" src="https://www.youtube.com/watch?v=RkayLBGbhos" frameborder="0"
+        allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+      </div> -->
+
+      <BR><BR><BR>
+
+
+      <!--------------------------------------------------------------------------------------------------->
+      <!--                                            Results                                           --->
+      <!--------------------------------------------------------------------------------------------------->
+
+      <hr>
+
+      <div align="justify">
+
+        <h1>Results </h1>
+
+        <BR>
+        <div align="center"><img src="./images/compare-to-dong-heatmap-01.svg" width="880" alt="Figure 2"></div>
+        <p class="figure">
+          <strong>Figure 2:</strong>
+          Reconstruction error difference between the method of [Dong et al. 2019] and our method. Red indicates a
+          higher reconstruction error of [Dong et al. 2019] compared to ours while blue indicates similar reconstruction
+          quality.
+        </p>
+        <BR><BR>
+
+
+        <div align="center"><img src="./images/compare-to-nosy-mode-switch_image_only-01.svg" width="800"
+            alt="Figure 2"></div>
+        <p class="figure">
+          <strong>Figure 3:</strong>
+          Comparison of the task scheduling between two settings of our
+          method with (Ours) and without the asynchronous task-flow model
+          (NoFlow). All robots switch between the explorer mode (red) and reconstructor mode (blue), and each time when
+          the control center is activated
+          for new task generation and assignment is indicated by the black dotted
+          line. Comparing to our method, the robots in NoFlow have idle time (shown
+          in black slash region) to wait for others finishing all assigned tasks, which
+          leads to significant time waste during the whole process.
+        </p>
+        <BR><BR>
+
+      </div>
+
+      <BR>
+
+
+      <!--------------------------------------------------------------------------------------------------->
+      <!--                                        Acknowledgments                                       --->
+      <!--------------------------------------------------------------------------------------------------->
+
+      <hr>
+
+      <div align="justify">
+
+        <h1>Acknowledgments </h1>
+
+        <p class="text">
+          <span style="font-size: 13pt; line-height:22px">
+            We thank the anonymous reviewers for their valuable comments.
+            This work was supported in parts by the National Natural Science
+            Foundation of China (61872250, 62025207), Guangdong Natural Science Foundation (2021B1515020085), Shenzhen
+            Science and Technology Program (RCYX20210609103121030), and Guangdong Laboratory of Artificial
+            Intelligence and Digital Economy (SZ).
+          </span>
+        </p>
+      </div>
+
+      <BR><BR>
+
+
+
+      <!--------------------------------------------------------------------------------------------------->
+      <!--                                        Bibtex                                       --->
+      <!--------------------------------------------------------------------------------------------------->
+
+      <hr>
+
+      <div align="justify">
+
+        <h1>Bibtex </h1>
+        <table style="font-size: 13pt; line-height:30px" align="left">
+          <caption></caption>
+          <tr>
+            <td>@</td>
+            <td>article{</td>
+            <td></td>
+            <td> Guo-2022-AsyncScan,</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>title</td>
+            <td>=</td>
+            <td> {Asynchronous Collaborative Autoscanning with Mode Switching for Multi-Robot Scene Reconstruction},
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>author</td>
+            <td>=</td>
+            <td> {Junfu Guo, Changhao Li, Xi Xia, Ruizhen Hu, Ligang Liu},</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>journal</td>
+            <td>=</td>
+            <td> {ACM Transactions on Graphics (SIGGRAPH Asia 2022)},</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>volume</td>
+            <td>=</td>
+            <td> {41},</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>number</td>
+            <td>=</td>
+            <td> {6},</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>pages</td>
+            <td>=</td>
+            <td> {198:1 -- 198:13},</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>year</td>
+            <td>=</td>
+            <td> {2022}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <BR><BR><BR><BR>
+
+
+      <!----------------------------CopyRight---------------------------->
+
+    </blockquote>
+  </font>
+
+</html>
